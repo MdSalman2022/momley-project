@@ -4,6 +4,8 @@ import { createContext } from "react";
 export const StateContext = createContext();
 
 const StateProvider = ({ children }) => {
+
+
   const {
     data: allBooks = [],
     refetch,
@@ -30,6 +32,7 @@ const StateProvider = ({ children }) => {
       staleTime: 5 * (60 * 1000), // consider data fresh for 5 minutes
     }
   );
+  
 
   console.log(allBooks);
 

@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 const BookCard = ({ book }) => {
   return (
     <div className="flex flex-col items-center gap-3 border border-[#EEEEEE] p-3 rounded">
-      <Link to={`/details/${book._id}`}>
+      <Link to={`/book/${book._id}`}>
         <img className="" src={book.image} width={164} height={217} />
       </Link>
-      <Link to={`/details/${book._id}`}>
+      <Link to={`/book/${book._id}`}>
         <p className="font-semibold text-sm text-center">{book.name}</p>
       </Link>
       <p className="text-sm">{book.writer}</p>

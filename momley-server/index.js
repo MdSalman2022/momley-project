@@ -31,6 +31,15 @@ async function run() {
             res.send(books)
         })
 
+
+        app.get('/api/get/book/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: new ObjectId(id) }
+            const result = await productCollection.findOne(query)
+            res.send(result)
+        })
+
+
         // app.post('/orderhistory', async (req, res) => {
         //     const order = req.body;
         //     const result = await OrderCollection.insertOne(order)
