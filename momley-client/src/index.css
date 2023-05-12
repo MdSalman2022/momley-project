@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+.container {
+  max-width: 1536px;
+  margin: 0 auto;
+}
+
+@layer components {
+  .primary-btn {
+    @apply py-2 px-4 bg-[#000000] text-white font-semibold rounded shadow-md hover:bg-[#111111] transition-all duration-300;
+  }
+  .primary-outline-btn {
+    @apply transition-all duration-300 py-2 px-4 border border-[#000000]  text-[#000000] hover:text-white font-semibold rounded hover:bg-[#111111] focus:outline-none;
+  }
+  .input-box {
+    @apply mt-1 block px-3 py-2 bg-white  border border-black rounded-md text-sm shadow-sm placeholder-slate-400
+    focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
+    disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
+    invalid:border-pink-500 invalid:text-pink-600
+    focus:invalid:border-pink-500 focus:invalid:ring-pink-500 text-black;
+  }
+}
