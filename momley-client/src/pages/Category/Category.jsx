@@ -13,7 +13,7 @@ const Category = () => {
     return <Loading />;
   }
 
-  console.log(books);
+  console.log(allBooks);
 
   return (
     <div className="pb-10">

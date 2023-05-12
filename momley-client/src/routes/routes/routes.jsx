@@ -3,6 +3,9 @@ import Main from "../../layout/Main";
 import Home from "../../pages/Home/Home";
 import BookDetails from "../../pages/BookDetails/BookDetails";
 import Category from "../../pages/category/Category";
+import CheckoutPage from "../../pages/CheckoutPage/CheckoutPage";
+import CheckoutInfoPage from "../../pages/CheckoutInfoPage/CheckoutInfoPage";
+import OrderSuccessPage from "../../pages/OrderSuccessPage/OrderSuccessPage";
 
 export const router = createBrowserRouter([
   {
@@ -19,7 +22,21 @@ export const router = createBrowserRouter([
       },
       {
         path: "/book/:id",
+        loader: ({ params }) =>
+          fetch(`${import.meta.env.VITE_SERVER_URL}/api/get/book/${params.id}`),
         element: <BookDetails />,
+      },
+      {
+        path: "/checkout",
+        element: <CheckoutPage />,
+      },
+      {
+        path: "/checkout/info",
+        element: <CheckoutInfoPage />,
+      },
+      {
+        path: "/checkout/successfull",
+        element: <OrderSuccessPage />,
       },
     ],
   },

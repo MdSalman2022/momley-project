@@ -1,9 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Inter", sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -15,8 +17,15 @@
 }
 
 .container {
-  max-width: 1400px;
-  margin: 0 auto;
+  width: 100%;
+}
+
+/* Styles for large displays */
+@media screen and (min-width: 1200px) {
+  .container {
+    width: 1400px;
+    margin: 0 auto;
+  }
 }
 
 @layer components {

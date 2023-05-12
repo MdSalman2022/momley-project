@@ -22,20 +22,22 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 
 async function run() {
     try {
-        const productCollection = client.db("momley").collection("bookCollection");
+        const bookCollection = client.db("momley").collection("bookCollection");
 
         app.get('/api/get/booklist', async (req, res) => {
-            const cursor = productCollection.find({})
+            const cursor = bookCollection.find({})
             const books = await cursor.toArray()
-            console.log(books)
+            // console.log(books)
             res.send(books)
         })
 
 
         app.get('/api/get/book/:id', async (req, res) => {
             const id = req.params.id;
+            console.log(id)
             const query = { _id: new ObjectId(id) }
-            const result = await productCollection.findOne(query)
+            const result = await bookCollection.findOne(query)
+            console.log(result)
             res.send(result)
         })
 
@@ -49,7 +51,7 @@ async function run() {
         // app.delete('/delete', async (req, res) => {
         //     const ids = req.body.ids;
         //     const objectIds = ids.map(id => new ObjectId(id));
-        //     const result = await productCollection.deleteMany({ _id: { $in: objectIds } });
+        //     const result = await bookCollection.deleteMany({ _id: { $in: objectIds } });
         //     res.send(result);
         // });
 
@@ -63,7 +65,7 @@ async function run() {
         //             stock: req.body.stock,
         //         }
         //     }
-        //     const result = await productCollection.updateOne(filter, updatedDoc, { upsert: false })
+        //     const result = await bookCollection.updateOne(filter, updatedDoc, { upsert: false })
         //     res.json(result)
         // })
 

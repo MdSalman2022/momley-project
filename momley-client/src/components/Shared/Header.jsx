@@ -2,10 +2,22 @@ import { FiPhoneCall } from "react-icons/fi";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import ModalBox from "./ModalBox";
+import Login from "./Login";
+import { StateContext } from "../../contexts/StateProvider/StateProvider";
 
 const Header = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { cart } = useContext(StateContext);
+
   return (
     <div className="container mx-auto py-2">
+      {isModalOpen && (
+        <ModalBox isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
+          <Login />
+        </ModalBox>
+      )}
       <nav className="flex items-center justify-between">
         <Link to="/" className="logo">
           <img
@@ -32,13 +44,16 @@ const Header = () => {
           <div className="flex flex-col px-5">
             Bag <span>0.00</span>
           </div>
-          <div className="relative">
+          <Link to="/checkout" className="relative">
             <HiOutlineShoppingBag className="text-3xl" />
             <span className="absolute top-0 right-0 w-3 text-xs rounded-full text-white bg-red-500 flex justify-center">
-              1
+              {cart.length}
             </span>
-          </div>
-          <button className="primary-outline-btn px-3 py-2">
+          </Link>
+          <button
+            onClick={() => setIsModalOpen(!isModalOpen)}
+            className="primary-outline-btn px-3 py-2"
+          >
             login/ sign up
           </button>
         </div>
