@@ -6,6 +6,7 @@ import Category from "../../pages/category/Category";
 import CheckoutPage from "../../pages/CheckoutPage/CheckoutPage";
 import CheckoutInfoPage from "../../pages/CheckoutInfoPage/CheckoutInfoPage";
 import OrderSuccessPage from "../../pages/OrderSuccessPage/OrderSuccessPage";
+import UserProfile from "../../pages/UserDashboard/UserProfile/UserProfile";
 
 export const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ export const router = createBrowserRouter([
       {
         path: "/checkout/successfull",
         element: <OrderSuccessPage />,
+      },
+      {
+        path: "/profile",
+        element: <UserProfile />,
       },
     ],
   },
