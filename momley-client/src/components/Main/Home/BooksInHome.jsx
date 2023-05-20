@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
-import BooksGroup from "../Shared/BooksGroup";
-import Loading from "../Shared/Loading";
-import { StateContext } from "../../contexts/StateProvider/StateProvider";
-import BookCard from "../Shared/BookCard";
+import BooksGroup from "../../Shared/BooksGroup";
+import Loading from "../../Shared/Loading";
+import { StateContext } from "../../../contexts/StateProvider/StateProvider";
+import BookCard from "../../Shared/BookCard";
 import { Link } from "react-router-dom";
 
 const BooksInHome = () => {

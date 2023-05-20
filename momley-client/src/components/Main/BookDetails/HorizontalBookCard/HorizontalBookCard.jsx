@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { BsCartPlus } from "react-icons/bs";
 import { FaMinus, FaPlus, FaStar, FaStarHalf } from "react-icons/fa";
-import { StateContext } from "../../../contexts/StateProvider/StateProvider";
+import { StateContext } from "../../../../contexts/StateProvider/StateProvider";
 
 const HorizontalBookCard = ({ book }) => {
   const { cart, setCart } = useContext(StateContext);

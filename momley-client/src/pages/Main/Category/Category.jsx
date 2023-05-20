@@ -1,10 +1,10 @@
 "use client";
 import React, { useContext, useEffect, useState } from "react";
 import { FaChevronLeft, FaChevronRight, FaChevronUp } from "react-icons/fa";
-import Banner from "../../components/Home/Banner";
-import BookCard from "../../components/Shared/BookCard";
-import { StateContext } from "../../contexts/StateProvider/StateProvider";
-import Loading from "../../components/Shared/Loading";
+import Banner from "../../../components/Main/Home/Banner";
+import BookCard from "../../../components/Shared/BookCard";
+import { StateContext } from "../../../contexts/StateProvider/StateProvider";
+import Loading from "../../../components/Shared/Loading";
 
 const Category = () => {
   const { allBooks, isLoading } = useContext(StateContext);

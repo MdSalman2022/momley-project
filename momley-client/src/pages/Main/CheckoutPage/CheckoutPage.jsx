@@ -3,9 +3,9 @@ import { BsCartPlus } from "react-icons/bs";
 import { FaMinus, FaPlus } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
 import { Link } from "react-router-dom";
-import { StateContext } from "../../contexts/StateProvider/StateProvider";
+import { StateContext } from "../../../contexts/StateProvider/StateProvider";
 import { useContext, useEffect, useState } from "react";
-import CheckoutBookList from "../../components/CheckoutPage/CheckoutBookList";
+import CheckoutBookList from "../../../components/Main/CheckoutPage/CheckoutBookList";
 
 const CheckoutPage = () => {
   const { cart, setCart } = useContext(StateContext);

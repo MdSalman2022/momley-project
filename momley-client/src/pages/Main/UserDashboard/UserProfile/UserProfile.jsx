@@ -3,11 +3,11 @@ import { BiLogOut, BiUser } from "react-icons/bi";
 import { BsListStars } from "react-icons/bs";
 import { AiOutlineSetting, AiOutlineShoppingCart } from "react-icons/ai";
 import { IoNotificationsOutline } from "react-icons/io5";
-import MyProfile from "../../../components/UserProfile/MyProfile/MyProfile";
-import MyOrder from "../../../components/UserProfile/MyOrder/MyOrder";
-import MyReview from "../../../components/UserProfile/MyReview/MyReview";
-import MyNotification from "../../../components/UserProfile/MyNotification/MyNotification";
-import MySetting from "../../../components/UserProfile/MySetting/MySetting";
+import MyProfile from "../../../../components/UserProfile/MyProfile/MyProfile";
+import MyOrder from "../../../../components/UserProfile/MyOrder/MyOrder";
+import MyReview from "../../../../components/UserProfile/MyReview/MyReview";
+import MyNotification from "../../../../components/UserProfile/MyNotification/MyNotification";
+import MySetting from "../../../../components/UserProfile/MySetting/MySetting";
 
 const UserProfile = () => {
   const [pageName, setPageName] = useState("My Profile");

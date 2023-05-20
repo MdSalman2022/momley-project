@@ -1,12 +1,25 @@
 import { createBrowserRouter } from "react-router-dom/dist";
 import Main from "../../layout/Main";
-import Home from "../../pages/Home/Home";
-import BookDetails from "../../pages/BookDetails/BookDetails";
-import Category from "../../pages/category/Category";
-import CheckoutPage from "../../pages/CheckoutPage/CheckoutPage";
-import CheckoutInfoPage from "../../pages/CheckoutInfoPage/CheckoutInfoPage";
-import OrderSuccessPage from "../../pages/OrderSuccessPage/OrderSuccessPage";
-import UserProfile from "../../pages/UserDashboard/UserProfile/UserProfile";
+import Home from "../../pages/Main/Home/Home";
+import BookDetails from "../../pages/Main/BookDetails/BookDetails";
+import Category from "../../pages/Main/category/Category";
+import CheckoutPage from "../../pages/Main/CheckoutPage/CheckoutPage";
+import CheckoutInfoPage from "../../pages/Main/CheckoutInfoPage/CheckoutInfoPage";
+import OrderSuccessPage from "../../pages/Main/OrderSuccessPage/OrderSuccessPage";
+import UserProfile from "../../pages/Main/UserDashboard/UserProfile/UserProfile";
+import DashboardLayout from "../../layout/DashboardLayout";
+import Dashboard from "../../pages/Dashboard/Dashboard/Dashboard";
+import Orders from "../../pages/Dashboard/Orders/Orders";
+import Inventory from "../../pages/Dashboard/Inventory/Inventory";
+import ShopperList from "../../pages/Dashboard/ShopperList/ShopperList";
+import Customers from "../../pages/Dashboard/Customers/Customers";
+import Discount from "../../pages/Dashboard/Discount/Discount";
+import Report from "../../pages/Dashboard/Report/Report";
+import Preferences from "../../pages/Dashboard/Preferences/Preferences";
+import PageCreate from "../../pages/PageCreate/PageCreate";
+import Settings from "../../pages/Settings/Settings";
+import Navigation from "../../pages/Dashboard/Navigation/Navigation";
+import Products from "../../pages/Dashboard/Products/Products";
 
 export const router = createBrowserRouter([
   {
@@ -42,6 +55,60 @@ export const router = createBrowserRouter([
       {
         path: "/profile",
         element: <UserProfile />,
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: <DashboardLayout />,
+    children: [
+      {
+        path: "/dashboard/overview",
+        element: <Dashboard />,
+      },
+      {
+        path: "/dashboard/products",
+        element: <Products />,
+      },
+      {
+        path: "/dashboard/orders",
+        element: <Orders />,
+      },
+      {
+        path: "/dashboard/inventory",
+        element: <Inventory />,
+      },
+      {
+        path: "/dashboard/shopper-list",
+        element: <ShopperList />,
+      },
+      {
+        path: "/dashboard/customers",
+        element: <Customers />,
+      },
+      {
+        path: "/dashboard/discount",
+        element: <Discount />,
+      },
+      {
+        path: "/dashboard/report",
+        element: <Report />,
+      },
+      {
+        path: "/dashboard/preferences",
+        element: <Preferences />,
+      },
+      {
+        path: "/dashboard/navigation",
+        element: <Navigation />,
+      },
+      {
+        path: "/dashboard/page-create",
+        element: <PageCreate />,
+      },
+      {
+        path: "/dashboard/settings",
+        element: <Settings />,
       },
     ],
   },

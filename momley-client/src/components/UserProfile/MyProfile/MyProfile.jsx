@@ -54,7 +54,7 @@ const MyProfile = () => {
               <input
                 type="text"
                 className="input-box"
-                placeholder="Your Name"
+              placeholder="Your Name"
               />
             </label>
           </div>

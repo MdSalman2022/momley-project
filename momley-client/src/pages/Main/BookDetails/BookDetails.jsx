@@ -13,12 +13,12 @@ import {
 } from "react-icons/fa";
 import { MdOutlineSecurityUpdateGood } from "react-icons/md";
 import { SiMoneygram } from "react-icons/si";
-import { StateContext } from "../../contexts/StateProvider/StateProvider";
-import Loading from "../../components/Shared/Loading";
-import BookCard from "../../components/Shared/BookCard";
+import { StateContext } from "../../../contexts/StateProvider/StateProvider";
+import Loading from "../../../components/Shared/Loading";
+import BookCard from "../../../components/Shared/BookCard";
 import { Link, useLoaderData, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import HorizontalBookCard from "../../components/BookDetails/HorizontalBookCard/HorizontalBookCard";
+import HorizontalBookCard from "../../../components/Main/BookDetails/HorizontalBookCard/HorizontalBookCard";
 import { Player } from "@lottiefiles/react-lottie-player";
 
 const BookDetails = () => {
