@@ -33,7 +33,7 @@ const CheckoutBookList = ({ book }) => {
           const updatedItem = {
             ...item,
             quantity: item.quantity - 1,
-            totalPrice: item.price * (item.quantity - 1),
+            totalPrice: item.pricing.price * (item.quantity - 1),
           };
           return updatedItem;
         } else {
@@ -63,7 +63,7 @@ const CheckoutBookList = ({ book }) => {
           const updatedItem = {
             ...item,
             quantity: item.quantity + 1,
-            totalPrice: item.price * (item.quantity + 1),
+            totalPrice: item.pricing.price * (item.quantity + 1),
           };
           return updatedItem;
         } else {
@@ -77,7 +77,7 @@ const CheckoutBookList = ({ book }) => {
       const newCartItem = {
         ...book,
         quantity: 1,
-        totalPrice: book.price,
+        totalPrice: book.pricing.price,
       };
       setCart([...cart, newCartItem]);
       localStorage.setItem("cart", JSON.stringify([...cart, newCartItem]));
@@ -91,10 +91,10 @@ const CheckoutBookList = ({ book }) => {
       className="bg-[#FBFBFB] grid grid-cols-6 items-center px-5 py-3"
     >
       <div className="col-span-2 flex items-center gap-5">
-        <img className="" src={book.image} width={80} height={80} />
+        <img className="" src={book.images[0]} width={80} height={80} />
         <div>{book.name}</div>
       </div>
-      <p>{book.price}</p>
+      <p>{book.pricing.price}</p>
       <div className="flex items-center gap-3">
         <button
           onClick={() => handleMinusClick(book)}

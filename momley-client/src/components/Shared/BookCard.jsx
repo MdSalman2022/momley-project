@@ -44,7 +44,7 @@ const BookCard = ({ book }) => {
       const newCartItem = {
         ...book,
         quantity: cartCount ? cartCount : 1,
-        totalPrice: book.price * (cartCount ? cartCount : 1),
+        totalPrice: book.pricing.price * (cartCount ? cartCount : 1),
       };
       setCart([...cart, newCartItem]);
       localStorage.setItem("cart", JSON.stringify([...cart, newCartItem]));
@@ -63,7 +63,7 @@ const BookCard = ({ book }) => {
           const updatedItem = {
             ...item,
             quantity: item.quantity - 1,
-            totalPrice: item.price * (item.quantity - 1),
+            totalPrice: item.pricing.price * (item.quantity - 1),
           };
           return updatedItem;
         } else {
@@ -84,7 +84,7 @@ const BookCard = ({ book }) => {
           const updatedItem = {
             ...item,
             quantity: item.quantity + 1,
-            totalPrice: item.price * (item.quantity + 1),
+            totalPrice: item.pricing.price * (item.quantity + 1),
           };
           return updatedItem;
         } else {
@@ -98,24 +98,37 @@ const BookCard = ({ book }) => {
       const newCartItem = {
         ...book,
         quantity: 1,
-        totalPrice: book.price,
+        totalPrice: book.pricing?.price,
       };
       setCart([...cart, newCartItem]);
       localStorage.setItem("cart", JSON.stringify([...cart, newCartItem]));
       setCartCount(1);
     }
   };
+  const [imageUrl, setImageUrl] = useState("");
+
+  useEffect(() => {
+    if (book && book.images && book.images.length > 0) {
+      const firstImage = book.images[0];
+      // console.log(firstImage);
+      setImageUrl(firstImage);
+    } else {
+      setImageUrl(book.image);
+    }
+  }, [book]);
+
+  // console.log(imageUrl);
 
   return (
-    <div className="flex flex-col items-center gap-3 border border-[#EEEEEE] p-3 rounded">
+    <div className="flex flex-col items-center justify-between gap-3 border border-[#EEEEEE] p-3 rounded">
       <Link to={`/book/${book._id}`}>
-        <img className="" src={book.image} width={164} height={217} />
+        <img className="object-cover w-[164px] h-[217px]" src={imageUrl} />
       </Link>
       <Link to={`/book/${book._id}`}>
         <p className="font-semibold text-sm text-center">{book.name}</p>
       </Link>
       <p className="text-sm">{book.writer}</p>
-      <p className="font-semibold ">৳ {book.price}</p>
+      <p className="font-semibold ">৳ {book?.pricing?.price}</p>
       <span className="flex items-center">
         <FaStar />
         <FaStar />

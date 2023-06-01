@@ -1,7 +1,11 @@
 import React from "react";
+import { useContext } from "react";
 import { FaPlus } from "react-icons/fa";
+import { StateContext } from "../../../contexts/StateProvider/StateProvider";
 
 const Inventory = () => {
+  const { allBooks } = useContext(StateContext);
+
   return (
     <div className="space-y-5">
       <div className="flex justify-between font-medium">
@@ -62,45 +66,27 @@ const Inventory = () => {
             </thead>
             <tbody>
               {/* row 1 */}
-              <tr>
-                <th>
-                  <label className="flex items-center gap-2">
-                    <input type="checkbox" className="checkbox" />
-                    <p className="text-sm font-normal">Himalaya Anti Cream</p>
-                  </label>
-                </th>
-                <td>
-                  <div className="flex items-center space-x-3">
-                    <p className="text-sm">850</p>
-                  </div>
-                </td>
-                <td>
-                  <span>23</span>
-                </td>
-                <td>SK-23422</td>
-                <td>Momley</td>
-                <td className="text-blue-600">Add</td>
-              </tr>
-              {/* row 2 */}
-              <tr>
-                <th>
-                  <label className="flex items-center gap-2">
-                    <input type="checkbox" className="checkbox" />
-                    <p className="text-sm font-normal">Himalaya Anti Cream</p>
-                  </label>
-                </th>
-                <td>
-                  <div className="flex items-center space-x-3">
-                    <p className="text-sm">850</p>
-                  </div>
-                </td>
-                <td>
-                  <span>23</span>
-                </td>
-                <td>SK-23422</td>
-                <td>Momley</td>
-                <td className="text-blue-600">Add</td>
-              </tr>
+              {allBooks.map(book => (
+                <tr key={book._id}>
+                  <th>
+                    <label className="flex items-center gap-2">
+                      <input type="checkbox" className="checkbox" />
+                      <p className="text-sm font-normal">{book?.name}</p>
+                    </label>
+                  </th>
+                  <td>
+                    <div className="flex items-center space-x-3">
+                      <p className="text-sm">৳ {book?.pricing?.price}</p>
+                    </div>
+                  </td>
+                  <td>
+                    <span>{book?.inventory?.sku}</span>
+                  </td>
+                  <td>SK-{book?.inventory?.barcode}</td>
+                  <td>{book?.specification?.brand}</td>
+                  <td className="text-blue-600">Add</td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>

@@ -89,7 +89,7 @@ const StateProvider = ({ children }) => {
     );
   }
 
-  console.log(allBooks);
+  // console.log(allBooks);
 
   const stateInfo = {
     allBooks,

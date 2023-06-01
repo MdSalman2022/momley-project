@@ -24,11 +24,13 @@ const DashboardLayout = () => {
         <div className="px-5 md:px-0 py-0 ">
           <div className="flex flex-col items-start md:grid md:grid-cols-4 gap-0 container mx-auto min-h-screen">
             <div className="flex flex-col items-center gap-1 p-3 bg-white border h-fit w-full">
-              <img
-                className="w-52 py-6"
-                src="https://i.ibb.co/TW8T2kc/logo-momley.png"
-                alt=""
-              />
+              <Link to="/">
+                <img
+                  className="w-52 py-6"
+                  src="https://i.ibb.co/TW8T2kc/logo-momley.png"
+                  alt=""
+                />
+              </Link>
               <Link className="w-full" to="/dashboard/overview">
                 <p
                   className={`h-[52px] rounded ${
@@ -48,7 +50,7 @@ const DashboardLayout = () => {
                       : "bg-white text-black"
                   } w-full flex items-center gap-2 px-5`}
                 >
-                  <BsGrid className="text-xl" /> Products
+                  <BsBag className="text-xl" /> Products
                 </p>
               </Link>
               <Link className="w-full" to="/dashboard/orders">
@@ -163,7 +165,7 @@ const DashboardLayout = () => {
               </Link>
             </div>
             <div className="col-span-3 flex flex-col">
-              <div className="flex justify-between px-5 py-3 m-5 bg-white">
+              <div className="flex flex-col items-start md:flex-row justify-between px-5 py-3 m-5 bg-white">
                 <input
                   type="text"
                   className="input-box rounded-full w-80"

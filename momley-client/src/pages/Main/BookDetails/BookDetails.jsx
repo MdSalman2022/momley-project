@@ -52,7 +52,7 @@ const BookDetails = () => {
             ...item,
             quantity: cartCount ? cartCount : item.quantity + 1,
             totalPrice:
-              item.price * (cartCount ? cartCount : item.quantity + 1),
+              item.pricing.price * (cartCount ? cartCount : item.quantity + 1),
           };
           return updatedItem;
         } else {
@@ -99,47 +99,40 @@ const BookDetails = () => {
             <div className="flex col-span-2 w-full gap-10">
               <div className="flex flex-col gap-5">
                 <img
-                  className="object-contain w-full md:w-fit lg:w-[360px] h-[400px]"
-                  src={bookDetails.image}
+                  className="object-cover w-full md:w-fit lg:w-[360px] h-[400px]"
+                  src={bookDetails.images[0]}
                 />
                 <div className="flex items-center gap-5">
                   <img
-                    src="https://i.ibb.co/VJJW1pv/image.png"
-                    width={75}
-                    height={120}
+                    src={bookDetails.images[1]}
+                    className="w-20 h-40 object-cover"
                   />
                   <img
-                    src="https://i.ibb.co/VJJW1pv/image.png"
-                    width={75}
-                    height={120}
+                    src={bookDetails.images[2]}
+                    className="w-20 h-40 object-cover"
                   />
                   <img
-                    src="https://i.ibb.co/VJJW1pv/image.png"
-                    width={75}
-                    height={120}
-                  />
-                  <img
-                    src="https://i.ibb.co/VJJW1pv/image.png"
-                    width={75}
-                    height={120}
+                    src={bookDetails.images[3]}
+                    className="w-20 h-40 object-cover"
                   />
                 </div>
               </div>
               <div className="flex flex-col gap-4">
                 <h2 className="text-2xl">{bookDetails.name}</h2>
                 <div className="text-4xl text-red-500 font-bold">
-                  Tk {bookDetails.price}
+                  Tk {bookDetails.pricing.price}
                 </div>
-                <p>Writer: {bookDetails.writer}</p>
-                <p>Publisher: Sabil Publication</p>
-                <p>Category: Sirate Rasul</p>
+                <p>Writer: {bookDetails.specification.author}</p>
+                <p>Publisher: {bookDetails.specification.brand}</p>
+                <p>Category: {bookDetails.categoryInfo.category}</p>
                 <div className="flex gap-2">
                   <p>
                     Availability:{" "}
                     <span className="text-green-500">In Stock</span>
                   </p>
                   <p>
-                    <span className="font-semibold">SUK:</span>123456
+                    <span className="font-semibold">SKU:</span>
+                    {bookDetails.inventory.sku}
                   </p>
                 </div>
                 <div className="primary-btn w-fit">
@@ -192,44 +185,45 @@ const BookDetails = () => {
                 </div>
 
                 <div className="flex flex-col gap-5 mr-2">
-                  <p>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Dignissimos in non doloribus facilis repellendus beatae nam
-                    ipsa vitae cum ad, eum nemo accusamus maiores voluptas, vel
-                    dolore veniam sunt. Repudiandae impedit, fugit laudantium
-                    ipsam, sint explicabo quaerat nam officiis eum ad enim,
-                    consequatur inventore accusamus! Necessitatibus accusamus
-                    neque ex blanditiis.
-                  </p>
+                  <p>{bookDetails.description}</p>
 
                   <p className="text-xl">Specification</p>
                   <div>
                     <div className="grid grid-cols-4">
-                      <span>Material</span>
-                      <span className="col-span-2">ABC</span>
+                      <span>Category</span>
+                      <span className="col-span-2">
+                        {bookDetails.categoryInfo.category} ||{" "}
+                        {bookDetails.categoryInfo.subCategory} ||{" "}
+                        {bookDetails.categoryInfo.subSubCategory} ||{" "}
+                        {bookDetails.categoryInfo.subSubSubCategory}
+                      </span>
                     </div>
                     <div className="grid grid-cols-4">
-                      <span>Claimed Size</span>
-                      <span className="col-span-2">ABC</span>
+                      <span>Author</span>
+                      <span className="col-span-2">
+                        {bookDetails.specification.author}
+                      </span>
                     </div>
                     <div className="grid grid-cols-4">
-                      <span>Recommended Use</span>
-                      <span className="col-span-2">ABC</span>
+                      <span>Brand</span>
+                      <span className="col-span-2">
+                        {bookDetails.specification.brand}
+                      </span>
                     </div>
                     <div className="grid grid-cols-4">
                       <span>Manufacturer</span>
-                      <span className="col-span-2">ABC</span>
+                      <span className="col-span-2">
+                        {bookDetails.specification.supplier}
+                      </span>
+                    </div>
+                    <div className="grid grid-cols-4">
+                      <span>Weight</span>
+                      <span className="col-span-2">
+                        {bookDetails.shipping.weight}
+                      </span>
                     </div>
                   </div>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Minima numquam, tempore facere nobis nesciunt tenetur dolor
-                    laudantium culpa commodi? Eius impedit, delectus veniam,
-                    veritatis eaque maxime non atque ullam minus ut quia
-                    deserunt ex amet quo et neque alias nesciunt, asperiores
-                    voluptates itaque? Reprehenderit nostrum libero eos
-                    voluptatum delectus commodi.
-                  </p>
+                  <p>{bookDetails.description}</p>
                 </div>
               </div>
             </div>

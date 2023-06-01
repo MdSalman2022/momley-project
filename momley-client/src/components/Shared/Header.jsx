@@ -4,10 +4,12 @@ import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
 import ModalBox from "./ModalBox";
-import Login from "./Login";
+import Login from "./Authentication/Login";
 import { StateContext } from "../../contexts/StateProvider/StateProvider";
+import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 
 const Header = () => {
+  const { user, logOut } = useContext(AuthContext);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { cart } = useContext(StateContext);
 
@@ -50,12 +52,24 @@ const Header = () => {
               {cart.length}
             </span>
           </Link>
-          <button
-            onClick={() => setIsModalOpen(!isModalOpen)}
-            className="primary-outline-btn px-3 py-2"
-          >
-            login/ sign up
-          </button>
+          {user ? (
+            <div className="flex items-center gap-3">
+              <p>{user.phoneNumber}</p>
+              <button
+                onClick={() => logOut()}
+                className="primary-outline-btn px-3 py-2"
+              >
+                Log Out
+              </button>
+            </div>
+          ) : (
+            <button
+              onClick={() => setIsModalOpen(!isModalOpen)}
+              className="primary-outline-btn px-3 py-2"
+            >
+              login/ sign up
+            </button>
+          )}
         </div>
       </nav>
     </div>

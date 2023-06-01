@@ -68,7 +68,7 @@ const HorizontalBookCard = ({ book }) => {
         <div className="flex flex-col justify-between gap-3">
           <img
             className="object-contain h-32"
-            src={book?.image}
+            src={book?.images[0]}
             alt={book?.name}
           />
           <div className="flex items-center rounded-sm justify-between border border-black">

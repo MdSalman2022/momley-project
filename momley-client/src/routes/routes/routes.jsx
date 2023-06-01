@@ -20,6 +20,7 @@ import PageCreate from "../../pages/PageCreate/PageCreate";
 import Settings from "../../pages/Settings/Settings";
 import Navigation from "../../pages/Dashboard/Navigation/Navigation";
 import Products from "../../pages/Dashboard/Products/Products";
+import AddProduct from "../../components/Dashboard/Products/AddProduct/AddProduct";
 
 export const router = createBrowserRouter([
   {
@@ -69,6 +70,10 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/products",
         element: <Products />,
+      },
+      {
+        path: "/dashboard/products/add",
+        element: <AddProduct />,
       },
       {
         path: "/dashboard/orders",
