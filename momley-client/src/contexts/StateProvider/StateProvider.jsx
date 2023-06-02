@@ -5,30 +5,44 @@ import { createContext, useEffect, useState } from "react";
 export const StateContext = createContext();
 
 const StateProvider = ({ children }) => {
+  const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(20);
+
+  const [totalPages, setTotalPages] = useState(0);
+
+  console.log(page);
+  console.log(pageSize);
   const {
-    data: allBooks = [],
-    refetch,
+    data: { books: allBooks = [] } = {},
     isLoading,
     error,
+    refetch,
   } = useQuery(
-    ["allData"],
-    () =>
-      fetch(`${import.meta.env.VITE_SERVER_URL}/api/get/booklist`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-        .then(res => {
-          console.log("Fetch successful!"); // add console log here
-          return res.json();
-        })
-        .catch(err => {
-          console.log("Fetch error:", err); // add console log here
-        }),
+    ["allData", page, pageSize],
+    async () => {
+      const response = await fetch(
+        `${
+          import.meta.env.VITE_SERVER_URL
+        }/api/get/booklist?page=${page}&pageSize=${pageSize}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const data = await response.json();
+      return data;
+    },
     {
-      cacheTime: 10 * (60 * 1000), // cache data for 10 minutes
-      staleTime: 5 * (60 * 1000), // consider data fresh for 5 minutes
+      cacheTime: 10 * 60 * 1000, // cache data for 10 minutes
+      staleTime: 5 * 60 * 1000, // consider data fresh for 5 minutes
+      onSuccess: data => {
+        console.log(data);
+        const totalCount = data.totalDataLength; // Assuming the API response provides the total count of books
+        const calculatedTotalPages = Math.ceil(totalCount / pageSize);
+        setTotalPages(calculatedTotalPages);
+      },
     }
   );
 
@@ -76,7 +90,7 @@ const StateProvider = ({ children }) => {
   }, [cart]);
 
   if (isLoading) {
-    console.log(isLoading);
+    // console.log(isLoading);
     return (
       <div className="flex justify-center items-center h-screen bg-white bg-opacity-30">
         <Player
@@ -98,6 +112,12 @@ const StateProvider = ({ children }) => {
     refetch,
     cart,
     setCart,
+    setPageSize,
+    setPage,
+    page,
+    pageSize,
+    totalPages,
+    setTotalPages,
   };
 
   return (

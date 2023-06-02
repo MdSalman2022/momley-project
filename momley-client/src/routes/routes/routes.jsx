@@ -36,6 +36,18 @@ export const router = createBrowserRouter([
         element: <Category />,
       },
       {
+        path: "/books/:name",
+        loader: ({ params }) =>
+          fetch(
+            `${
+              import.meta.env.VITE_SERVER_URL
+            }/api/get/books/bycategory?category=${
+              params.name
+            }&&page=1&&pageSize=100`
+          ),
+        element: <Category />,
+      },
+      {
         path: "/book/:id",
         loader: ({ params }) =>
           fetch(`${import.meta.env.VITE_SERVER_URL}/api/get/book/${params.id}`),

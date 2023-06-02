@@ -92,7 +92,9 @@ const BookDetails = () => {
   return (
     <Suspense fallback={<Loading />}>
       <div className="container mx-auto">
-        <p className="py-5">Home/Categories/Mom & Baby</p>
+        <p className="py-5">
+          Home/ Categories/ {bookDetails?.categoryInfo?.category}
+        </p>
         {/* <Login /> */}
         <div className="grid grid-cols-4">
           <div className="col-span-3 grid grid-cols-2 gap-5 h-fit">
@@ -102,29 +104,31 @@ const BookDetails = () => {
                   className="object-cover w-full md:w-fit lg:w-[360px] h-[400px]"
                   src={bookDetails.images[0]}
                 />
-                <div className="flex items-center gap-5">
-                  <img
-                    src={bookDetails.images[1]}
-                    className="w-20 h-40 object-cover"
-                  />
-                  <img
-                    src={bookDetails.images[2]}
-                    className="w-20 h-40 object-cover"
-                  />
-                  <img
-                    src={bookDetails.images[3]}
-                    className="w-20 h-40 object-cover"
-                  />
-                </div>
+                {bookDetails.images.length > 1 && (
+                  <div className="flex items-center gap-5">
+                    <img
+                      src={bookDetails?.images[1]}
+                      className="w-20 h-40 object-cover"
+                    />
+                    <img
+                      src={bookDetails?.images[2]}
+                      className="w-20 h-40 object-cover"
+                    />
+                    <img
+                      src={bookDetails?.images[3]}
+                      className="w-20 h-40 object-cover"
+                    />
+                  </div>
+                )}
               </div>
               <div className="flex flex-col gap-4">
-                <h2 className="text-2xl">{bookDetails.name}</h2>
+                <h2 className="text-2xl">{bookDetails?.name}</h2>
                 <div className="text-4xl text-red-500 font-bold">
-                  Tk {bookDetails.pricing.price}
+                  Tk {bookDetails?.pricing?.price}
                 </div>
-                <p>Writer: {bookDetails.specification.author}</p>
-                <p>Publisher: {bookDetails.specification.brand}</p>
-                <p>Category: {bookDetails.categoryInfo.category}</p>
+                <p>Writer: {bookDetails?.specification?.author}</p>
+                <p>Publisher: {bookDetails?.specification?.brand}</p>
+                <p>Category: {bookDetails?.categoryInfo?.category}</p>
                 <div className="flex gap-2">
                   <p>
                     Availability:{" "}
@@ -132,7 +136,7 @@ const BookDetails = () => {
                   </p>
                   <p>
                     <span className="font-semibold">SKU:</span>
-                    {bookDetails.inventory.sku}
+                    {bookDetails?.inventory?.sku}
                   </p>
                 </div>
                 <div className="primary-btn w-fit">
@@ -192,38 +196,38 @@ const BookDetails = () => {
                     <div className="grid grid-cols-4">
                       <span>Category</span>
                       <span className="col-span-2">
-                        {bookDetails.categoryInfo.category} ||{" "}
-                        {bookDetails.categoryInfo.subCategory} ||{" "}
-                        {bookDetails.categoryInfo.subSubCategory} ||{" "}
-                        {bookDetails.categoryInfo.subSubSubCategory}
+                        {bookDetails?.categoryInfo?.category} ||{" "}
+                        {bookDetails?.categoryInfo?.subCategory} ||{" "}
+                        {bookDetails?.categoryInfo?.subSubCategory} ||{" "}
+                        {bookDetails?.categoryInfo?.subSubSubCategory}
                       </span>
                     </div>
                     <div className="grid grid-cols-4">
                       <span>Author</span>
                       <span className="col-span-2">
-                        {bookDetails.specification.author}
+                        {bookDetails?.specification?.author}
                       </span>
                     </div>
                     <div className="grid grid-cols-4">
                       <span>Brand</span>
                       <span className="col-span-2">
-                        {bookDetails.specification.brand}
+                        {bookDetails?.specification?.brand}
                       </span>
                     </div>
                     <div className="grid grid-cols-4">
                       <span>Manufacturer</span>
                       <span className="col-span-2">
-                        {bookDetails.specification.supplier}
+                        {bookDetails?.specification?.supplier}
                       </span>
                     </div>
                     <div className="grid grid-cols-4">
                       <span>Weight</span>
                       <span className="col-span-2">
-                        {bookDetails.shipping.weight}
+                        {bookDetails?.shipping?.weight}
                       </span>
                     </div>
                   </div>
-                  <p>{bookDetails.description}</p>
+                  <p>{bookDetails?.description}</p>
                 </div>
               </div>
             </div>

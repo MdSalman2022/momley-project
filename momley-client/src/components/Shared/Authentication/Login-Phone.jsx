@@ -6,6 +6,7 @@ import {
 } from "firebase/auth";
 import { auth } from "../../../config/firebase-config";
 import { sendToServer } from "./LoginPostDB";
+import { toast } from "react-hot-toast";
 
 // Function to confirm OTP entered by the user
 async function confirmOTP(otp, phoneNumber, displayName) {
@@ -17,16 +18,21 @@ async function confirmOTP(otp, phoneNumber, displayName) {
     const user = result.user;
     console.log(user);
     console.log(displayName);
+    const fname = displayName?.split(" ")[0];
+    const lname = displayName?.split(" ")[1];
     const postData = {
       userId: user.uid,
-      fname: displayName?.split(" ")[0],
-      lname: displayName?.split(" ")[1],
+      fname,
+      lname,
       phone: phoneNumber,
     };
 
     console.log(postData);
 
-    sendToServer(postData, postData);
+    if (fname && lname && phoneNumber) {
+      sendToServer(postData);
+    }
+    toast.success("Logged in successfully!");
 
     return { message: true, UID: user.uid };
   } catch (error) {

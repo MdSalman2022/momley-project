@@ -73,7 +73,7 @@ const AuthProvider = ({ children }) => {
   const handleVerifyOTP = async (otp, phoneNumber, displayName) => {
     // e.preventDefault();
     if (otp.length === 6) {
-      console.log(otp);
+      // console.log(otp);
       const getOTPConfirmation = await confirmOTP(
         otp,
         phoneNumber,
@@ -94,7 +94,7 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, currentUser => {
       setUser(currentUser);
-      console.log(currentUser);
+      // console.log(currentUser);
       setLoading(false);
     });
 

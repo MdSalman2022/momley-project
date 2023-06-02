@@ -17,7 +17,7 @@ const Header = () => {
     <div className="container mx-auto py-2">
       {isModalOpen && (
         <ModalBox isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
-          <Login />
+          <Login setIsModalOpen={setIsModalOpen} />
         </ModalBox>
       )}
       <nav className="flex items-center justify-between">

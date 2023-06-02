@@ -17,7 +17,7 @@ const BooksInHome = () => {
       <p>New Arrival</p>
       <div className="py-5 flex flex-col gap-3 items-center">
         <div className="grid grid-cols-7 gap-5">
-          {allBooks.map((book, index) => (
+          {allBooks.slice(1, 20).map((book, index) => (
             <BookCard key={index} book={book} />
           ))}
         </div>
