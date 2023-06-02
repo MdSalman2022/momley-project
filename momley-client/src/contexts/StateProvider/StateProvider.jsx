@@ -89,19 +89,19 @@ const StateProvider = ({ children }) => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
-  if (isLoading) {
-    // console.log(isLoading);
-    return (
-      <div className="flex justify-center items-center h-screen bg-white bg-opacity-30">
-        <Player
-          className="w-80 md:w-52 object-cover"
-          autoplay
-          loop
-          src="https://assets2.lottiefiles.com/packages/lf20_p8bfn5to.json"
-        ></Player>
-      </div>
-    );
-  }
+  // if (isLoading) {
+  //   // console.log(isLoading);
+  //   return (
+  //     <div className="flex justify-center items-center h-screen bg-white bg-opacity-30">
+  //       <Player
+  //         className="w-80 md:w-52 object-cover"
+  //         autoplay
+  //         loop
+  //         src="https://assets2.lottiefiles.com/packages/lf20_p8bfn5to.json"
+  //       ></Player>
+  //     </div>
+  //   );
+  // }
 
   // console.log(allBooks);
 

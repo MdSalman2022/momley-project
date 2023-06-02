@@ -119,10 +119,6 @@ const Category = () => {
     }
   };
 
-  if (isLoading) {
-    return <Loading />;
-  }
-
   return (
     <div className="pb-10">
       <div className="container mx-auto ">
@@ -271,50 +267,88 @@ const Category = () => {
                   </div>
                 </div>
               </div>
-              <div className="grid grid-cols-4 gap-5">
-                {filterBooks.length > 0
-                  ? filterBooks.map((book, index) => (
-                      <BookCard key={index} book={book} />
-                    ))
-                  : data
-                  ? data.map((book, index) => (
-                      <BookCard key={index} book={book} />
-                    ))
-                  : allBooks.map((book, index) => (
-                      <BookCard key={index} book={book} />
+              {isLoading ? (
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+                  {Array(8)
+                    .fill()
+                    .map((_, index) => (
+                      <div
+                        key={index}
+                        className="w-60 h-96 rounded-lg bg-gray-300 animate-pulse p-5 flex flex-col items-center gap-5"
+                      >
+                        <div className="rounded-lg w-full h-64 bg-gray-400 animate-pulse"></div>
+                        <div className="rounded-lg w-20 h-5 bg-gray-400 animate-pulse"></div>
+                        <div className="rounded-lg w-20 h-5 bg-gray-400 animate-pulse"></div>
+                        <div className="rounded-lg w-20 h-5 bg-gray-400 animate-pulse"></div>
+                        <div className="rounded-lg w-44 h-14 bg-gray-400 animate-pulse"></div>
+                      </div>
                     ))}
-                {totalPages > 0 && (
-                  <div className="col-span-4 flex items-center gap-10 justify-center">
-                    <button
-                      className="primary-btn"
-                      onClick={handlePreviousPage}
-                      disabled={page === 1}
-                    >
-                      Previous
-                    </button>
-                    <span>
-                      Page {page} of {totalPages}
-                    </span>
-                    <button
-                      className="primary-btn"
-                      onClick={handleNextPage}
-                      disabled={page === totalPages}
-                    >
-                      Next
-                    </button>
-                  </div>
-                )}
-              </div>
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
+                  {filterBooks.length > 0
+                    ? filterBooks.map((book, index) => (
+                        <BookCard key={index} book={book} />
+                      ))
+                    : data
+                    ? data.map((book, index) => (
+                        <BookCard key={index} book={book} />
+                      ))
+                    : allBooks.map((book, index) => (
+                        <BookCard key={index} book={book} />
+                      ))}
+                  {totalPages > 0 && (
+                    <div className="col-span-4 flex items-center gap-10 justify-center">
+                      <button
+                        className="primary-btn"
+                        onClick={handlePreviousPage}
+                        disabled={page === 1}
+                      >
+                        Previous
+                      </button>
+                      <span>
+                        Page {page} of {totalPages}
+                      </span>
+                      <button
+                        className="primary-btn"
+                        onClick={handleNextPage}
+                        disabled={page === totalPages}
+                      >
+                        Next
+                      </button>
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           </div>
         </div>
         <strong>You may also like</strong>
-        <div className="grid grid-cols-6 gap-5">
-          {allBooks &&
-            allBooks
-              ?.slice(0, 10)
-              ?.map((book, index) => <BookCard key={index} book={book} />)}
-        </div>
+        {isLoading ? (
+          <div className="grid grid-cols-6 gap-5">
+            {Array(8)
+              .fill()
+              .map((_, index) => (
+                <div
+                  key={index}
+                  className="w-52 h-96 rounded-lg bg-gray-300 animate-pulse p-5 flex flex-col items-center gap-5"
+                >
+                  <div className="rounded-lg w-full h-64 bg-gray-400 animate-pulse"></div>
+                  <div className="rounded-lg w-20 h-5 bg-gray-400 animate-pulse"></div>
+                  <div className="rounded-lg w-20 h-5 bg-gray-400 animate-pulse"></div>
+                  <div className="rounded-lg w-20 h-5 bg-gray-400 animate-pulse"></div>
+                  <div className="rounded-lg w-40 h-14 bg-gray-400 animate-pulse"></div>
+                </div>
+              ))}
+          </div>
+        ) : (
+          <div className="grid grid-cols-6 gap-5">
+            {allBooks &&
+              allBooks
+                ?.slice(0, 10)
+                ?.map((book, index) => <BookCard key={index} book={book} />)}
+          </div>
+        )}
       </div>
     </div>
   );
