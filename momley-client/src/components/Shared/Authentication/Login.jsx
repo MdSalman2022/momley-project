@@ -12,7 +12,7 @@ const Login = () => {
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
 
-  const handleMobileLoginSubmit = e => {
+  const handleMobileLoginSubmit = (e) => {
     e.preventDefault();
 
     const phoneNumber = "+" + 88 + phone;
@@ -21,12 +21,13 @@ const Login = () => {
     handleMobileLogin(phoneNumber);
   };
 
-  const handleVerifyOTPSubmit = e => {
+  const handleVerifyOTPSubmit = (e) => {
     e.preventDefault();
     const phoneNumber = "+" + 88 + phone;
     console.log(phoneNumber);
     const displayName = fname + " " + lname;
     console.log(displayName);
+
     !isLogin && handleVerifyOTP(otp, phoneNumber, displayName);
     isLogin && handleVerifyOTP(otp);
   };
@@ -71,7 +72,7 @@ const Login = () => {
                 placeholder="First Name"
                 name="fname"
                 type="text"
-                onChange={e => setFname(e.target.value)}
+                onChange={(e) => setFname(e.target.value)}
               />
             )}
             {!isLogin && (
@@ -80,7 +81,7 @@ const Login = () => {
                 placeholder="Last Name"
                 name="lname"
                 type="text"
-                onChange={e => setLname(e.target.value)}
+                onChange={(e) => setLname(e.target.value)}
               />
             )}
             <div id="recaptcha-container" className="mb-4"></div>
@@ -96,7 +97,7 @@ const Login = () => {
               className="input-box h-12 w-full border-[#f5f5f5]"
               value={phone}
               placeholder="01314534677"
-              onChange={e => setPhone(e.target.value)}
+              onChange={(e) => setPhone(e.target.value)}
             />
           </div>
           <button
@@ -121,7 +122,7 @@ const Login = () => {
                 id="otp"
                 className="input-box w-full"
                 value={otp}
-                onChange={e => setOTP(e.target.value)}
+                onChange={(e) => setOTP(e.target.value)}
               />
             </div>
             <button

@@ -7,11 +7,14 @@ import ModalBox from "./ModalBox";
 import Login from "./Authentication/Login";
 import { StateContext } from "../../contexts/StateProvider/StateProvider";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
+import MenuModal from "./MenuModal";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { cart } = useContext(StateContext);
+
+  const [isMenuModalOpen, setIsMenuModalOpen] = useState(false);
 
   return (
     <div className="container mx-auto py-2">
@@ -53,14 +56,16 @@ const Header = () => {
             </span>
           </Link>
           {user ? (
-            <div className="flex items-center gap-3">
-              <p>{user.phoneNumber}</p>
-              <button
-                onClick={() => logOut()}
-                className="primary-outline-btn px-3 py-2"
-              >
-                Log Out
-              </button>
+            <div className="flex">
+              <img
+                onClick={() => setIsMenuModalOpen(!isMenuModalOpen)}
+                className="w-10"
+                src={
+                  user.photoURL ||
+                  "https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o="
+                }
+                alt=""
+              />
             </div>
           ) : (
             <button
@@ -70,6 +75,31 @@ const Header = () => {
               login/ sign up
             </button>
           )}
+          <MenuModal
+            setIsMenuModalOpen={setIsMenuModalOpen}
+            isMenuModalOpen={isMenuModalOpen}
+          >
+            <div className="w-32 flex flex-col  bg-white  items-end relative">
+              <Link
+                className="font-medium text-sm hover:font-semibold hover:bg-gray-200 w-full px-5 py-3 flex justify-end"
+                to="/profile"
+              >
+                Profile
+              </Link>
+              <Link
+                className="font-medium text-sm hover:font-semibold hover:bg-gray-200 w-full px-5 py-3 flex justify-end"
+                to="/checkout"
+              >
+                Cart
+              </Link>
+              <button
+                onClick={() => logOut()}
+                className="font-medium text-sm hover:font-semibold hover:bg-gray-200 w-full px-5 py-3 flex justify-end"
+              >
+                Log Out
+              </button>
+            </div>
+          </MenuModal>
         </div>
       </nav>
     </div>
